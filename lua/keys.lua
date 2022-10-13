@@ -10,7 +10,7 @@ map('n', 't', [[:TagbarToggle<cr>]], {})
 
 -- Save buffer
 map('n', '<c-s>', ':w<CR>', {})
-map('i', '<c-s>', '<Esc>:w<CR>', {})
+map('i', '<c-s>', '<Esc>:w<cr>', {})
 
 -- Navigation
 map('n', '<c-j>', '<c-w>j', opts)
@@ -30,7 +30,7 @@ map('n', 'K', ':lua vim.lsp.buf.hover()<cr>', opts)
 map('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<cr>', opts)
 map('n', '<leader>af', ':lua vim.lsp.buf.code_action()<cr>', opts)
 map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', opts)
-
+map('n', '<space>e', '<cmd> lua vim.diagnostic.open_float()<cr>', opts)
 map('n', '<c-a>', ':CodeActionMenu<cr>', opts)
 
 -- Telescope 
