@@ -56,7 +56,10 @@ return require('packer').startup(function(use)
     use 'lukas-reineke/indent-blankline.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'onsails/lspkind-nvim'
+
+    -- Git improvements
     use 'airblade/vim-gitgutter'
+    use 'f-person/git-blame.nvim'
 end
 --    config = {
 --        package_root = vim.fn.stdpath('config') .. '/site/pack'
