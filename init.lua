@@ -103,10 +103,41 @@ cmp.setup.cmdline(':', {
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+
+-- Elixir LSP 
 require('lspconfig')['elixirls'].setup {
   capabilities = capabilities,
   cmd = { "/usr/local/Cellar/elixir-ls/0.11.0/libexec/language_server.sh" }
 }
+
+-- Python LSP 
+require('lspconfig')['pylsp'].setup {
+  capabilities = capabilities,
+
+}
+
+-- Rust LSP
+require('lspconfig').rust_analyzer.setup({
+    on_attach=on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
 
 require('lualine').setup {
   sections = {
