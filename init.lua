@@ -107,7 +107,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 -- Elixir LSP 
 require('lspconfig')['elixirls'].setup {
   capabilities = capabilities,
-  cmd = { "/usr/local/Cellar/elixir-ls/0.11.0/libexec/language_server.sh" }
+  cmd = { "/usr/local/Cellar/elixir-ls/0.12.0/libexec/language_server.sh" },
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
 }
 
 -- Python LSP 

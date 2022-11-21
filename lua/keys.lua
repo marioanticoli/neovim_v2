@@ -5,7 +5,7 @@ local opts = { noremap = true }
 -- Toggle nvim-tree
 map('n', 'feo', [[:NvimTreeToggle<cr>]], {})
 
-map('n', 'l', [[:IndentLinesToggle<cr>]], {})
+map('n', '<leader>l', [[:IndentLinesToggle<cr>]], {})
 map('n', 't', [[:TagbarToggle<cr>]], {})
 
 -- Save buffer
@@ -45,4 +45,13 @@ map('n', '<S-l>', ':BufferNext<cr>', opts)
 map('n', '<S-tab>', ':BufferPick<cr>', opts)
 map('n', '<c-w>', ':BufferClose<cr>', opts)
 map('n', '<S-c-w>', ':BufferCloseAllButCurrentOrPinned<cr>', opts)
+
+-- Trouble
+local trouble_opts = {silent = true, noremap = true}
+map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", trouble_opts)
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", trouble_opts)
+map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", trouble_opts)
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", trouble_opts)
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", trouble_opts)
+map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", trouble_opts)
 
