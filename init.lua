@@ -1,5 +1,9 @@
 --[[ init.lua ]]
 
+-- Disable netrw in favour of nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- LEADER
 -- These keybindings need to be defined before the first /
 -- is called; otherwise, it will default to "\"
@@ -176,10 +180,19 @@ require("nvim-tree").setup({
         { key = "u", action = "dir_up" },
       },
     },
+    number = true,
+    relativenumber = true,
   },
   renderer = {
     group_empty = true,
+    highlight_opened_files = "all",
   },
+  update_focused_file = {
+    enable = true,
+  },
+  create_in_closed_folder = true,
+  hijack_unnamed_buffer_when_opening = true,
+  hijack_cursor = true,
   filters = {
     dotfiles = false,
   },
