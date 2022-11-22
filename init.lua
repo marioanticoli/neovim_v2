@@ -30,9 +30,11 @@ require('opts')      -- Options
 require('keys')      -- Keymaps
 require('plug')      -- Plugins
 
+require('onedark').load()
+
 require('lualine').setup {
   options = {
-    theme = 'dracula-nvim'
+    theme = 'onedark'
   }
 }
 

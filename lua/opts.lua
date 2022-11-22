@@ -34,7 +34,7 @@ opt.syntax = "ON"                -- str:  Allow syntax highlighting
 opt.termguicolors = true         -- bool: If term supports ui color then enable
 opt.mouse = ""                   -- str:  Disable mouse
 opt.wrap = true                  -- bool: Wrap line
-cmd('colorscheme dracula')       -- cmd:  Set the colorscheme
+--cmd('colorscheme dracula')       -- cmd:  Set the colorscheme
 
 -- [[ Folding ]]
 opt.foldmethod = "expr"
