@@ -10,6 +10,20 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ";"
 vim.g.localleader = "\\"
 
+-- Auto setup Packer
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
     -- Use a sharp border with `FloatBorder` highlights
@@ -44,11 +58,6 @@ require('impatient')
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "eex",
-    "elixir",
-    "erlang",
-    "heex",
-    "html"
   },
   highlight = {
     enable = true,
@@ -110,45 +119,6 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 
--- Elixir LSP 
-require('lspconfig')['elixirls'].setup {
-  capabilities = capabilities,
-  cmd = { "/usr/local/Cellar/elixir-ls/0.12.0/libexec/language_server.sh" },
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-
--- Python LSP 
-require('lspconfig')['pylsp'].setup {
-  capabilities = capabilities,
-
-}
-
--- Rust LSP
-require('lspconfig').rust_analyzer.setup({
-    on_attach=on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    }
-})
-
 require('lualine').setup {
   sections = {
     lualine_a = {
@@ -201,3 +171,14 @@ require("nvim-tree").setup({
 })
 
 require('telescope').load_extension('fzf', 'ui-select')
+
+-- Per project config
+vim.o.exrc = false
+require("exrc").setup({
+  files = {
+    ".nvimrc.lua",
+    ".nvimrc",
+    ".exrc.lua",
+    ".exrc",
+  },
+})
