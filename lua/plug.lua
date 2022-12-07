@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
-    use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+    use({'L3MON4D3/LuaSnip', tag = 'v<CurrentMajor>.*'})
     use {
         'weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu' }
@@ -63,10 +63,10 @@ return require('packer').startup(function(use)
     use 'f-person/git-blame.nvim'
 
     use {
-      "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
+      'folke/trouble.nvim',
+      requires = 'kyazdani42/nvim-web-devicons',
       config = function()
-        require("trouble").setup {
+        require('trouble').setup {
           -- your configuration comes here
           -- or leave it empty to use the default settings
           -- refer to the configuration section below
