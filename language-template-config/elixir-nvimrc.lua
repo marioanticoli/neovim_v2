@@ -4,8 +4,9 @@ require'nvim-treesitter.configs'.setup {
     "elixir",
     "erlang",
     "heex",
-    "html"
-  },
+    "html",
+    "javascript"
+ },
   highlight = {
     enable = true,
   },
