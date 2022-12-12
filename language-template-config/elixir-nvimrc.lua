@@ -31,3 +31,7 @@ require('lspconfig')['elixirls'].setup {
   }
 }
 
+vim.api.nvim_create_autocmd(
+    { "BufWritePost" },
+    { pattern = { "*.ex", "*.exs" }, command = "!mix format %" }
+)
