@@ -58,7 +58,9 @@ require('impatient')
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "javascript"
+    "javascript",
+    "json",
+    "yaml"
   },
   highlight = {
     enable = true,
