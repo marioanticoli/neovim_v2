@@ -12,6 +12,12 @@ map('n', 't', [[:TagbarToggle<cr>]], {})
 map('n', '<c-s>', ':w<CR>', {})
 map('i', '<c-s>', '<Esc>:w<cr>', {})
 
+-- Copy to system clipboard
+map('v', '<leader>y', '"*y :let @+=@*<CR>', {noremap=true, silent=true})
+map('n', '<leader>Y', '"*Y :let @+=@*<CR>', {noremap=true, silent=true})
+map('n', '<leader>p', '"+p', {noremap=true, silent=true})
+map('v', '<leader>x', '"*x :let @+=@*<CR>', {noremap=true, silent=true})
+
 -- Navigation
 map('n', '<c-j>', '<c-w>j', opts)
 map('n', '<c-h>', '<c-w>h', opts)
