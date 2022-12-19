@@ -38,6 +38,8 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   }
 )
 
+require'lspconfig'.tsserver.setup {}
+
 -- IMPORTS
 require('vars')      -- Variables
 require('opts')      -- Options

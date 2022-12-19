@@ -33,7 +33,11 @@ require('lspconfig')['elixirls'].setup {
   }
 }
 
-vim.api.nvim_create_autocmd(
-    { "BufWritePost" },
-    { pattern = { "*.ex", "*.exs" }, command = "!mix format %" }
-)
+--require'lspconfig'.tsserver.setup {}
+
+vim.api.nvim_set_keymap('n', '<leader>f', ':!mix format %<CR>', {noremap=true, silent=true})
+
+--vim.api.nvim_create_autocmd(
+    --{ "BufWritePost" },
+    --{ pattern = { "*.ex", "*.exs" }, command = "!mix format %" }
+--)
