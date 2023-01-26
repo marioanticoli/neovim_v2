@@ -10,26 +10,18 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ";"
 vim.g.localleader = "\\"
 
--- Auto setup Packer
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
     -- Use a sharp border with `FloatBorder` highlights
     border = "single"
   }
 )
+
+-- IMPORTS
+require('plug')      -- Plugins
+require('vars')      -- Variables
+require('opts')      -- Options
+require('keys')      -- Keymaps
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help, {
@@ -39,12 +31,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 )
 
 require'lspconfig'.tsserver.setup {}
-
--- IMPORTS
-require('vars')      -- Variables
-require('opts')      -- Options
-require('keys')      -- Keymaps
-require('plug')      -- Plugins
 
 require('onedark').load()
 
@@ -167,7 +153,6 @@ require("nvim-tree").setup({
   update_focused_file = {
     enable = true,
   },
-  create_in_closed_folder = true,
   hijack_unnamed_buffer_when_opening = true,
   hijack_cursor = true,
   filters = {

@@ -26,7 +26,8 @@ require'nvim-treesitter.configs'.setup {
 -- Elixir LSP 
 require('lspconfig')['elixirls'].setup {
   capabilities = capabilities,
-  cmd = { string.sub(vim.fn.system("which elixir-ls"), 1, -16) .. "/lib/language_server.sh" },
+  --cmd = { string.sub(vim.fn.system("which elixir-ls"), 1, -16) .. "/lib/language_server.sh" },
+  cmd = { "/home/mario/.elixir-ls/language_server.sh" },
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
