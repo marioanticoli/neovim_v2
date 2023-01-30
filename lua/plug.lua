@@ -92,7 +92,21 @@ return require('packer').startup(function(use)
 
     use 'duane9/nvim-rg'                              -- ripgrep
 
-    use 'voldikss/vim-floaterm'                       -- floating terminal
+    use 'numToStr/FTerm.nvim'                         -- floating terminal
+
+    use 'MattesGroeger/vim-bookmarks'                 -- bookmarks 
+
+    use {                                             -- suggest keys
+      'folke/which-key.nvim',
+      config = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+        require("which-key").setup {
+        }
+      end
+    }
+
+    use 'tom-anders/telescope-vim-bookmarks.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

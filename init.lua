@@ -162,6 +162,8 @@ require("nvim-tree").setup({
 
 require('telescope').load_extension('fzf', 'ui-select')
 
+require('telescope').extensions.vim_bookmarks.all {}
+
 -- Per project config
 vim.o.exrc = false
 require("exrc").setup({

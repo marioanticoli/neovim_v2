@@ -44,6 +44,7 @@ map('n', 'fg', ':Telescope live_grep<cr>', opts)
 map('n', 'fb', ':Telescope buffers<cr>', opts)
 map('n', 'fh', ':Telescope help_tags<cr>', opts)
 map('n', '<c-p>', ':Telescope find_files<cr>', opts)
+map('n', '<c-b>', ':Telescope vim_bookmarks<cr>', opts)
 
 -- BarBar
 map('n', '<S-h>', ':BufferPrevious<cr>', opts)
@@ -60,4 +61,8 @@ map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", trouble_op
 map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", trouble_opts)
 map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", trouble_opts)
 map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", trouble_opts)
+
+-- FTerm
+map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+map('t', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
 
