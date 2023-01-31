@@ -6,7 +6,6 @@ local opts = { noremap = true }
 map('n', 'feo', [[:NvimTreeToggle<cr>]], {})
 
 map('n', '<leader>l', [[:IndentLinesToggle<cr>]], {})
-map('n', 't', [[:TagbarToggle<cr>]], {})
 
 -- Save buffer
 map('n', '<c-s>', ':w<CR>', {})
@@ -44,7 +43,7 @@ map('n', 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_ar
 map('n', 'fb', ':Telescope buffers<cr>', opts)
 map('n', 'fh', ':Telescope help_tags<cr>', opts)
 map('n', '<c-p>', ':Telescope find_files<cr>', opts)
-map('n', '<c-b>', ':Telescope vim_bookmarks<cr>', opts)
+map('n', 'ms', ':Telescope vim_bookmarks<cr>', opts)
 
 -- BarBar
 map('n', '<S-h>', ':BufferPrevious<cr>', opts)

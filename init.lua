@@ -83,8 +83,9 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-  }, {
-    { name = 'buffer' },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "path" }
   })
 })
 
@@ -124,8 +125,8 @@ require('lualine').setup {
 
 require("nvim-tree").setup({
   remove_keymaps = {"f"},
-  open_on_setup = true,
-  open_on_setup_file = true,
+  --open_on_setup = true,
+  --open_on_setup_file = true,
   view = {
     width = function()
       local winwidth = vim.go.columns
@@ -174,3 +175,21 @@ require("exrc").setup({
     ".exrc",
   },
 })
+
+local function open_nvim_tree(data)
+
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end 
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })

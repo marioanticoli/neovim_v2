@@ -43,7 +43,6 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope-fzf-native.nvim',     -- fuzzy finder engine
         run = 'make' }
 
-    use { 'majutsushi/tagbar' }                        -- code structure
     use { 'Yggdroot/indentLine' }                      -- see indentation
     use { 'tpope/vim-fugitive' }                       -- git integration
     use { 'junegunn/gv.vim' }                          -- commit history
