@@ -40,7 +40,7 @@ map('n', '<space>e', '<cmd> lua vim.diagnostic.open_float()<cr>', opts)
 map('n', '<c-a>', ':CodeActionMenu<cr>', opts)
 
 -- Telescope 
-map('n', 'fg', ':Telescope live_grep<cr>', opts)
+map('n', 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>', opts)
 map('n', 'fb', ':Telescope buffers<cr>', opts)
 map('n', 'fh', ':Telescope help_tags<cr>', opts)
 map('n', '<c-p>', ':Telescope find_files<cr>', opts)

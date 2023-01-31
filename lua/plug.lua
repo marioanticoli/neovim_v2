@@ -34,11 +34,15 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim',                 -- fuzzy finder
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = {
+          {'nvim-lua/plenary.nvim'},
+          {'nvim-telescope/telescope-live-grep-args.nvim'}
+        }
     }
     use {
         'nvim-telescope/telescope-fzf-native.nvim',     -- fuzzy finder engine
         run = 'make' }
+
     use { 'majutsushi/tagbar' }                        -- code structure
     use { 'Yggdroot/indentLine' }                      -- see indentation
     use { 'tpope/vim-fugitive' }                       -- git integration
@@ -89,8 +93,6 @@ return require('packer').startup(function(use)
     }
 
     use 'MunifTanjim/exrc.nvim'                       -- per project config
-
-    use 'duane9/nvim-rg'                              -- ripgrep
 
     use 'numToStr/FTerm.nvim'                         -- floating terminal
 

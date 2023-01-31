@@ -160,7 +160,7 @@ require("nvim-tree").setup({
   },
 })
 
-require('telescope').load_extension('fzf', 'ui-select')
+require('telescope').load_extension('fzf', 'ui-select', 'live_grep_args')
 
 require('telescope').extensions.vim_bookmarks.all {}
 
