@@ -4,6 +4,7 @@ require'nvim-treesitter.configs'.setup {
     "elixir",
     "erlang",
     "heex",
+    "surface",
     "html",
     "javascript",
     "json",
@@ -26,8 +27,7 @@ require'nvim-treesitter.configs'.setup {
 -- Elixir LSP 
 require('lspconfig')['elixirls'].setup {
   capabilities = capabilities,
-  --cmd = { string.sub(vim.fn.system("which elixir-ls"), 1, -16) .. "/lib/language_server.sh" },
-  cmd = { "/home/mario/.elixir-ls/language_server.sh" },
+  cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
@@ -36,7 +36,7 @@ require('lspconfig')['elixirls'].setup {
 
 --require'lspconfig'.tsserver.setup {}
 
-vim.api.nvim_set_keymap('n', '<leader>f', ':!mix format %<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<leader>f', ':w <bar> !mix format %<CR>', {noremap=true, silent=true})
 
 --vim.api.nvim_create_autocmd(
     --{ "BufWritePost" },
