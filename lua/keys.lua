@@ -32,7 +32,7 @@ map('n', 'gw', ':lua vim.lsp.buf.workspace_symbol()<cr>', opts)
 map('n', 'gr', ':lua vim.lsp.buf.references()<cr>', opts)
 map('n', 'gt', ':lua vim.lsp.buf.type_definition()<cr>', opts)
 map('n', 'K', ':lua vim.lsp.buf.hover()<cr>', opts)
-map('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<cr>', opts)
+map('n', 'gs', ':lua vim.lsp.buf.signature_help()<cr>', opts)
 map('n', '<leader>af', ':lua vim.lsp.buf.code_action()<cr>', opts)
 map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', opts)
 map('n', '<space>e', '<cmd> lua vim.diagnostic.open_float()<cr>', opts)
@@ -51,6 +51,7 @@ map('n', '<S-l>', ':BufferNext<cr>', opts)
 map('n', '<S-tab>', ':BufferPick<cr>', opts)
 map('n', '<c-w>', ':BufferClose<cr>', opts)
 map('n', '<S-c-w>', ':BufferCloseAllButCurrentOrPinned<cr>', opts)
+map('n', '<c-n>', ':enew<cr>', opts)
 
 -- Trouble
 local trouble_opts = {silent = true, noremap = true}
@@ -69,3 +70,6 @@ map('t', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
 map('n', '<leader>hp', ':Gitsigns preview_hunk_inline<CR>', opts)
 map('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', opts)
 map('n', '<leader>hu', ':Gitsigns undo_stage_hunk<CR>', opts)
+
+-- Unbind key 
+map('n', '<c>c', '<Nop>', opts)
