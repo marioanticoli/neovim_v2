@@ -76,9 +76,15 @@ return require('packer').startup(function(use)
     use 'onsails/lspkind-nvim'
 
     -- Git improvements
-    use 'airblade/vim-gitgutter'
     use 'f-person/git-blame.nvim'
-
+    use {
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require('gitsigns').setup()
+        require("scrollbar.handlers.gitsigns").setup()
+      end
+    }
+ 
     use {
       'folke/trouble.nvim',
       requires = 'kyazdani42/nvim-web-devicons',
@@ -124,6 +130,8 @@ return require('packer').startup(function(use)
         "nvim-telescope/telescope.nvim"
       }
     })
+
+    use "petertriho/nvim-scrollbar"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

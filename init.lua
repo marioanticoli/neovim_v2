@@ -124,6 +124,7 @@ require('lualine').setup {
 }
 
 require("nvim-tree").setup({
+  on_attach = on_attach,
   remove_keymaps = {"f"},
   --open_on_setup = true,
   --open_on_setup_file = true,
@@ -164,6 +165,8 @@ require("nvim-tree").setup({
 require('telescope').load_extension('fzf', 'ui-select', 'live_grep_args')
 
 require('telescope').extensions.vim_bookmarks.all {}
+
+require("scrollbar").setup()
 
 -- Per project config
 vim.o.exrc = false
