@@ -65,3 +65,7 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", trouble_opts)
 map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
 map('t', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
 
+-- GitSigns
+map('n', '<leader>hp', ':Gitsigns preview_hunk_inline<CR>', opts)
+map('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', opts)
+map('n', '<leader>hu', ':Gitsigns undo_stage_hunk<CR>', opts)
