@@ -24,9 +24,8 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
--- Elixir LSP 
-require('lspconfig')['elixirls'].setup {
-  capabilities = capabilities,
+-- Set up Elixir LSP
+lspconfig.elixirls.setup {
   cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
   on_attach = on_attach,
   flags = {
@@ -34,7 +33,14 @@ require('lspconfig')['elixirls'].setup {
   }
 }
 
---require'lspconfig'.tsserver.setup {}
+-- Set up Erlang LSP
+lspconfig.erlangls.setup {
+  cmd = { "/home/mario/.local/share/nvim/mason/bin/erlang_ls" },
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
 
 vim.api.nvim_set_keymap('n', '<leader>f', ':w <bar> !mix format %<CR>', {noremap=true, silent=true})
 

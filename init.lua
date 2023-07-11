@@ -29,8 +29,10 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     border = "single"
   }
 )
+-- Load the lspconfig module
+lspconfig = require('lspconfig')
 
-require'lspconfig'.tsserver.setup {}
+lspconfig.tsserver.setup {}
 
 require('onedark').load()
 
