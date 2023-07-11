@@ -68,6 +68,7 @@ require'nvim-treesitter.configs'.setup {
 
 require("mason").setup()
 
+-- Autocompletion settings
 local cmp = require'cmp'
 
 cmp.setup({
@@ -90,6 +91,13 @@ cmp.setup({
     { name = "path" }
   })
 })
+
+-- Snippets 
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load({
+  paths = {"./snippets"}
+})
+require('telescope').load_extension('luasnip')
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {

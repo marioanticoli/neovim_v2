@@ -66,7 +66,13 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
-    use 'L3MON4D3/LuaSnip'
+    use {                                               -- snippets
+        'L3MON4D3/LuaSnip',
+        dependencies = {'rafamadriz/friendly-snippets'}
+    }
+    use 'rafamadriz/friendly-snippets'
+    use 'benfowler/telescope-luasnip.nvim'
+        
     use {
         'weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu' }
