@@ -15,6 +15,8 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
+    use { "wbthomason/packer.nvim" }
+
     -- [[ Plugins Go Here ]]
     use {                                              -- filesystem navigation
         'kyazdani42/nvim-tree.lua',
