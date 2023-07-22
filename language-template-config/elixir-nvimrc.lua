@@ -24,13 +24,29 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+-- Debugger 
+require('dap').configurations.elixir = {
+  {
+    type = 'mix_task',
+    request = 'launch',
+    name = 'Debug',
+    task = 'test',
+    args = { '--trace' },
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = 'inspector',
+    stopOnEntry = false,
+  },
+}
+
 -- Set up Elixir LSP
 lspconfig.elixirls.setup {
   cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
-  }
+  },
+  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
 
 -- Set up Erlang LSP

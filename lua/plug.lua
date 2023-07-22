@@ -63,6 +63,14 @@ return require('packer').startup(function(use)
     -- LSP plugins
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
+    use {
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+        requires = {
+          'hrsh7th/nvim-cmp',
+          'hrsh7th/cmp-nvim-lsp'
+        }
+    }
+
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
@@ -140,6 +148,14 @@ return require('packer').startup(function(use)
     use "petertriho/nvim-scrollbar"
 
     use "chrisbra/csv.vim"                            -- csv support
+
+    use {                                             -- debugger support
+      'mfussenegger/nvim-dap',
+      requires = {
+        'theHamsta/nvim-dap-virtual-text',
+        'nvim-telescope/telescope-dap.nvim'
+      }
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

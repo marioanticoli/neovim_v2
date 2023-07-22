@@ -88,7 +88,8 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = "luasnip" },
     { name = "buffer" },
-    { name = "path" }
+    { name = "path" },
+    { name = 'nvim_lsp_signature_help' }
   })
 })
 
@@ -236,6 +237,9 @@ require('telescope').load_extension('fzf', 'ui-select', 'live_grep_args')
 require('telescope').extensions.vim_bookmarks.all {}
 
 require("scrollbar").setup()
+
+-- Debugger
+require('dap')
 
 -- Per project config
 vim.o.exrc = false
