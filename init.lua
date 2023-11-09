@@ -238,6 +238,17 @@ require('telescope').extensions.vim_bookmarks.all {}
 
 require("scrollbar").setup()
 
+vim.g.barbar_auto_setup = false
+require("barbar").setup({
+  highlight_inactive_file_icons = false,
+  icons = {
+    diagnostics = {
+      [vim.diagnostic.severity.ERROR] = {enabled = true, icon = 'ﬀ'}
+    },
+    preset = 'powerline',
+  }
+})
+
 -- Debugger
 require('dap')
 
