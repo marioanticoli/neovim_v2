@@ -40,6 +40,7 @@ map('n', '<c-a>', ':CodeActionMenu<cr>', opts)
 
 -- Telescope 
 map('n', 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>', opts)
+map('n', 'ff', ':lua require("telescope-live-grep-args.shortcuts").grep_word_under_cursor()<cr>', opts)
 map('n', 'fb', ':Telescope buffers<cr>', opts)
 map('n', 'fh', ':Telescope help_tags<cr>', opts)
 map('n', '<c-p>', ':Telescope find_files<cr>', opts)
