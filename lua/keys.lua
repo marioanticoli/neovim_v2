@@ -6,6 +6,7 @@ local opts = { noremap = true }
 map('n', 'feo', [[:NvimTreeToggle<cr>]], {})
 
 map('n', '<leader>l', [[:IndentLinesToggle<cr>]], {})
+map('n', '<leader>v', [[:vsplit<cr>]], {})
 
 -- Save buffer
 map('n', '<c-s>', ':w<CR>', {})
