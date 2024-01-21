@@ -147,6 +147,19 @@ return require('packer').startup(function(use)
       }
     }
 
+    -- Improve LSP 
+    use ({
+      'nvimdev/lspsaga.nvim',
+      after = 'nvim-lspconfig',
+      config = function()
+        require('lspsaga').setup({
+          ui = {
+            code_action = '💡'
+          }
+        })
+      end,
+    })
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
