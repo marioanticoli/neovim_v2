@@ -36,11 +36,11 @@ lspconfig.tsserver.setup {}
 
 require('onedark').load()
 
-require('lualine').setup {
-  options = {
-    theme = 'onedark'
-  }
-}
+--require('lualine').setup {
+  --options = {
+    --theme = 'onedark'
+  --}
+--}
 
 require('nvim-autopairs').setup{}
 

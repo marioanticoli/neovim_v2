@@ -33,6 +33,8 @@ return require('packer').startup(function(use)
         }
 
     use 'navarasu/onedark.nvim'                         -- onedark theme
+    --use { "catppuccin/nvim", as = "catppuccin" }
+    --use "olimorris/onedarkpro.nvim"
 
     use {
         'nvim-telescope/telescope.nvim',                 -- fuzzy finder
