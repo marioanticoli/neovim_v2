@@ -27,12 +27,16 @@ map('n', '<c-l>', '<c-w>l', opts)
 -- LSP 
 map('n', 'gd', ':lua vim.lsp.buf.definition()<cr>', opts)
 map('n', 'gD', ':lua vim.lsp.buf.declaration()<cr>', opts)
+map('n', 'gp', ':Lspsaga peek_definition<cr>', opts)
 map('n', 'gi', ':lua vim.lsp.buf.implementation()<cr>', opts)
 map('n', 'gb', ':lua vim.lsp.buf.document_symbol()<cr>', opts)
 map('n', 'gw', ':lua vim.lsp.buf.workspace_symbol()<cr>', opts)
 map('n', 'gr', ':lua vim.lsp.buf.references()<cr>', opts)
+--map('n', 'gr', ':Lspsaga finder<cr>', opts)
+map('n', 'go', ':Lspsaga outline<cr>', opts)
 map('n', 'gt', ':lua vim.lsp.buf.type_definition()<cr>', opts)
-map('n', 'K', ':lua vim.lsp.buf.hover()<cr>', opts)
+--map('n', 'K', ':lua vim.lsp.buf.hover()<cr>', opts)
+map('n', 'K', ':Lspsaga hover_doc<cr>', opts)
 map('n', 'gs', ':lua vim.lsp.buf.signature_help()<cr>', opts)
 map('n', '<leader>af', ':lua vim.lsp.buf.code_action()<cr>', opts)
 map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', opts)
@@ -52,7 +56,7 @@ map('n', '<S-h>', ':BufferPrevious<cr>', opts)
 map('n', '<S-l>', ':BufferNext<cr>', opts)
 map('n', '<S-tab>', ':BufferPick<cr>', opts)
 map('n', '<c-w>', ':BufferClose<cr>', opts)
-map('n', '<S-c-w>', ':BufferCloseAllButCurrentOrPinned<cr>', opts)
+map('n', '<A-w>', ':BufferCloseAllButCurrentOrPinned<cr>', opts)
 map('n', '<c-n>', ':enew<cr>', opts)
 
 -- Trouble
@@ -79,6 +83,9 @@ map('n', '<leader>s', ':Telescope luasnip<cr>', opts)
 
 -- Debugger
 map('n', '<leader>d', ':DapToggleBreakpoint<cr>', opts)
+
+-- Wrapping
+map('n', '<leader>w', ':set wrap!<cr>', opts)
 
 -- Unbind key 
 map('n', '<c>c', '<Nop>', opts)
