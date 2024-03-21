@@ -49,7 +49,6 @@ return require('packer').startup(function(use)
 
     use { 'Yggdroot/indentLine' }                      -- see indentation
     use { 'tpope/vim-fugitive' }                       -- git integration
-    use { 'junegunn/gv.vim' }                          -- commit history
     use { 'windwp/nvim-autopairs' }
 
     use 'lewis6991/impatient.nvim'                     -- speed up boot time
@@ -61,6 +60,7 @@ return require('packer').startup(function(use)
     }
 
     use 'nvim-treesitter/nvim-treesitter'               -- parser tool
+    -- maybe delete???
     use 'nvim-treesitter/nvim-treesitter-refactor'      -- refactor for treesitter
     use 'neovim/nvim-lspconfig'                         -- lsp client config 
     use 'williamboman/mason.nvim'                       -- package manager for lsp
@@ -85,10 +85,6 @@ return require('packer').startup(function(use)
     use 'rafamadriz/friendly-snippets'
     use 'benfowler/telescope-luasnip.nvim'
         
-    use {
-        'weilbith/nvim-code-action-menu',
-        cmd = 'CodeActionMenu' }
-
     use 'lukas-reineke/indent-blankline.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'onsails/lspkind-nvim'
@@ -108,18 +104,14 @@ return require('packer').startup(function(use)
       requires = 'kyazdani42/nvim-web-devicons',
       config = function()
         require('trouble').setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
         }
       end
     }
 
     use 'MunifTanjim/exrc.nvim'                       -- per project config
 
-    use 'numToStr/FTerm.nvim'                         -- floating terminal
-
     use 'MattesGroeger/vim-bookmarks'                 -- bookmarks 
+    use 'tom-anders/telescope-vim-bookmarks.nvim'
 
     use {                                             -- suggest keys
       'folke/which-key.nvim',
@@ -130,8 +122,6 @@ return require('packer').startup(function(use)
         }
       end
     }
-
-    use 'tom-anders/telescope-vim-bookmarks.nvim'
 
     use 'duane9/nvim-rg'                              -- ripgrep
 

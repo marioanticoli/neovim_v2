@@ -70,8 +70,20 @@ require("mason").setup()
 
 -- Autocompletion settings
 local cmp = require'cmp'
-
+local lspkind = require('lspkind')
 cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...',
+      show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    })
+  },
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
