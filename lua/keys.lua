@@ -38,10 +38,9 @@ map('n', 'gt', ':lua vim.lsp.buf.type_definition()<cr>', opts)
 --map('n', 'K', ':lua vim.lsp.buf.hover()<cr>', opts)
 map('n', 'K', ':Lspsaga hover_doc<cr>', opts)
 map('n', 'gs', ':lua vim.lsp.buf.signature_help()<cr>', opts)
-map('n', '<leader>af', ':lua vim.lsp.buf.code_action()<cr>', opts)
 map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<cr>', opts)
 map('n', '<space>e', '<cmd> lua vim.diagnostic.open_float()<cr>', opts)
-map('n', '<c-a>', ':CodeActionMenu<cr>', opts)
+map('n', '<c-a>', ':Lspsaga code_action<cr>', opts)
 
 -- Telescope 
 map('n', 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>', opts)
@@ -59,18 +58,9 @@ map('n', '<c-w>', ':BufferClose<cr>', opts)
 map('n', '<A-w>', ':BufferCloseAllButCurrentOrPinned<cr>', opts)
 map('n', '<c-n>', ':enew<cr>', opts)
 
--- Trouble
-local trouble_opts = {silent = true, noremap = true}
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", trouble_opts)
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", trouble_opts)
-map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", trouble_opts)
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", trouble_opts)
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", trouble_opts)
-map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", trouble_opts)
-
--- FTerm
-map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
-map('t', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+-- Terminal
+map('n', '<A-i>', '<cmd>Lspsaga term_toggle<CR>', opts)
+map('t', '<A-i>', '<cmd>Lspsaga term_toggle<CR>', opts)
 
 -- GitSigns
 map('n', '<leader>hp', ':Gitsigns preview_hunk_inline<CR>', opts)

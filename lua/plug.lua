@@ -87,7 +87,6 @@ return require('packer').startup(function(use)
         
     use 'lukas-reineke/indent-blankline.nvim'
     use 'nvim-lua/plenary.nvim'
-    use 'onsails/lspkind-nvim'
 
     -- Git improvements
     use 'f-person/git-blame.nvim'
@@ -99,15 +98,6 @@ return require('packer').startup(function(use)
       end
     }
  
-    use {
-      'folke/trouble.nvim',
-      requires = 'kyazdani42/nvim-web-devicons',
-      config = function()
-        require('trouble').setup {
-        }
-      end
-    }
-
     use 'MunifTanjim/exrc.nvim'                       -- per project config
 
     use 'MattesGroeger/vim-bookmarks'                 -- bookmarks 
