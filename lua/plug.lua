@@ -140,6 +140,32 @@ return require('packer').startup(function(use)
       end,
     })
 
+    -- Copilot
+    use {
+      "Exafunction/codeium.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+      },
+      config = function()
+        require("codeium").setup({
+          enable_chat = true
+        })
+      end
+    }
+    -- ChatGPT
+    --use "MunifTanjim/nui.nvim"
+    --use({
+      --"dpayne/CodeGPT.nvim",
+      --requires = {
+        --"MunifTanjim/nui.nvim",
+        --"nvim-lua/plenary.nvim",
+      --},
+      --config = function()
+        --require("codegpt.config")
+      --end
+    --})
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
