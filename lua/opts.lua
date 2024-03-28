@@ -1,6 +1,5 @@
 --[[ opts.lua ]]
 local opt = vim.opt
-local cmd = vim.cmd
 
 -- [[ Context ]]
 opt.colorcolumn = '80'           -- str:  Show col for max line length
@@ -34,11 +33,11 @@ opt.syntax = "ON"                -- str:  Allow syntax highlighting
 opt.termguicolors = true         -- bool: If term supports ui color then enable
 opt.mouse = ""                   -- str:  Disable mouse
 opt.wrap = true                  -- bool: Wrap line
---cmd.colorscheme "catppuccin"     -- cmd:  Set the colorscheme
---cmd.colorscheme "onedark"
 
 -- [[ Folding ]]
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 
+vim.loader.enable()              -- speed up loading nvim
+vim.o.exrc = true                -- enable secure loading project

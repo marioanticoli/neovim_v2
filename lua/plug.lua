@@ -1,178 +1,74 @@
 -- [[ plug.lua ]]
 
--- Auto setup Packer
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-    use { "wbthomason/packer.nvim" }
-
-    -- [[ Plugins Go Here ]]
-    use {                                              -- filesystem navigation
-        'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons'        -- filesystem icons
-    }
-
-    -- [[ Theme ]]
-    use { 'mhinz/vim-startify' }                       -- start screen
-    use { 'DanilaMihailov/beacon.nvim' }               -- cursor jump
-    use {
-        'nvim-lualine/lualine.nvim',                     -- statusline
-        requires = {'kyazdani42/nvim-web-devicons',
-                opt = true}
-        }
-
-    use 'navarasu/onedark.nvim'                         -- onedark theme
-    --use { "catppuccin/nvim", as = "catppuccin" }
-    --use "olimorris/onedarkpro.nvim"
-
-    use {
-        'nvim-telescope/telescope.nvim',                 -- fuzzy finder
-        requires = {
-          {'nvim-lua/plenary.nvim'},
-          {'nvim-telescope/telescope-live-grep-args.nvim'}
-        }
-    }
-    use {
-        'nvim-telescope/telescope-fzf-native.nvim',     -- fuzzy finder engine
-        run = 'make' }
-
-    use { 'Yggdroot/indentLine' }                      -- see indentation
-    use { 'tpope/vim-fugitive' }                       -- git integration
-    use { 'windwp/nvim-autopairs' }
-
-    use 'lewis6991/impatient.nvim'                     -- speed up boot time
-    use 'preservim/nerdcommenter'                      -- commenting
-    
-    use {
-        'romgrk/barbar.nvim',                           -- tabline
-        requires = {'kyazdani42/nvim-web-devicons'}
-    }
-
-    use 'nvim-treesitter/nvim-treesitter'               -- parser tool
+require("lazy").setup({
+	{'mhinz/vim-startify', enabled = true},
+	{'kyazdani42/nvim-tree.lua', enabled = true},
+	{'DanilaMihailov/beacon.nvim', enabled = true},                         -- cursor jump
+	{'nvim-lualine/lualine.nvim', enabled = true},                          -- statusline
+	{'navarasu/onedark.nvim', enabled = true},                              -- onedark theme
+	{'nvim-telescope/telescope.nvim', enabled = true},                      -- fuzzy finder
+	{'nvim-telescope/telescope-fzf-native.nvim', enabled = true},           -- fuzzy finder engine
+        --run = 'make' }
+	{'Yggdroot/indentLine', enabled = true},                                -- see indentation
+	{'tpope/vim-fugitive', enabled = true},                                 -- git integration
+	{'windwp/nvim-autopairs', enabled = true},
+	{'lewis6991/impatient.nvim', enabled = true},                           -- speed up boot time
+	{'preservim/nerdcommenter', enabled = true},                            -- commenting
+	{'romgrk/barbar.nvim', enabled = true},                                 -- tabline
+	{'nvim-treesitter/nvim-treesitter', enabled = true},                   -- parser tool
     -- maybe delete???
-    use 'nvim-treesitter/nvim-treesitter-refactor'      -- refactor for treesitter
-    use 'neovim/nvim-lspconfig'                         -- lsp client config 
-    use 'williamboman/mason.nvim'                       -- package manager for lsp
+	{'nvim-treesitter/nvim-treesitter-refactor', enabled = true},           -- refactor for treesitter
+	{'neovim/nvim-lspconfig', enabled = true},                              -- lsp client config 
+	{'williamboman/mason.nvim', enabled = true},                            -- package manager for lsp
     -- LSP plugins
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use {
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        requires = {
-          'hrsh7th/nvim-cmp',
-          'hrsh7th/cmp-nvim-lsp'
-        }
-    }
+	{'hrsh7th/nvim-cmp', enabled = true},
+	{'hrsh7th/cmp-nvim-lsp', enabled = true},
+	{'hrsh7th/cmp-nvim-lsp-signature-help', enabled = true},
 
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use {                                               -- snippets
-        'L3MON4D3/LuaSnip',
-        dependencies = {'rafamadriz/friendly-snippets'}
-    }
-    use 'rafamadriz/friendly-snippets'
-    use 'benfowler/telescope-luasnip.nvim'
-        
-    use 'lukas-reineke/indent-blankline.nvim'
-    use 'nvim-lua/plenary.nvim'
-
-    -- Git improvements
-    use 'f-person/git-blame.nvim'
-    use {
-      "lewis6991/gitsigns.nvim",
-      config = function()
-        require('gitsigns').setup()
-        require("scrollbar.handlers.gitsigns").setup()
-      end
-    }
- 
-    use 'MunifTanjim/exrc.nvim'                       -- per project config
-
-    use 'MattesGroeger/vim-bookmarks'                 -- bookmarks 
-    use 'tom-anders/telescope-vim-bookmarks.nvim'
-
-    use {                                             -- suggest keys
-      'folke/which-key.nvim',
-      config = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-        require("which-key").setup {
-        }
-      end
-    }
-
-    use 'duane9/nvim-rg'                              -- ripgrep
-
-    use "petertriho/nvim-scrollbar"
-
-    use "chrisbra/csv.vim"                            -- csv support
-
-    use {                                             -- debugger support
-      'mfussenegger/nvim-dap',
-      requires = {
-        'theHamsta/nvim-dap-virtual-text',
-        'nvim-telescope/telescope-dap.nvim'
-      }
-    }
-
-    -- Improve LSP 
-    use ({
-      'nvimdev/lspsaga.nvim',
-      after = 'nvim-lspconfig',
-      config = function()
-        require('lspsaga').setup({
-          ui = {
-            code_action = '💡'
-          }
-        })
-      end,
-    })
-
-    -- Copilot
-    use {
-      "Exafunction/codeium.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "hrsh7th/nvim-cmp",
-      },
-      config = function()
-        require("codeium").setup({
-          enable_chat = true
-        })
-      end
-    }
-    -- ChatGPT
-    --use "MunifTanjim/nui.nvim"
-    --use({
-      --"dpayne/CodeGPT.nvim",
-      --requires = {
-        --"MunifTanjim/nui.nvim",
-        --"nvim-lua/plenary.nvim",
-      --},
+	{'hrsh7th/cmp-buffer', enabled = true},
+	{'hrsh7th/cmp-path', enabled = true},
+	{'hrsh7th/cmp-cmdline', enabled = true},
+	{'L3MON4D3/LuaSnip', enabled = true},
+	{'rafamadriz/friendly-snippets', enabled = true},
+	{'benfowler/telescope-luasnip.nvim', enabled = true},
+	{'lukas-reineke/indent-blankline.nvim', enabled = true},
+	{'nvim-lua/plenary.nvim', enabled = true},
+	{'f-person/git-blame.nvim', enabled = true},
+	{'lewis6991/gitsigns.nvim', enabled = true},
       --config = function()
-        --require("codegpt.config")
+        --require('gitsigns').setup()
+        --require("scrollbar.handlers.gitsigns").setup()
       --end
+ 
+	{'MunifTanjim/exrc.nvim', enabled = true},                              -- per project config
+	{'MattesGroeger/vim-bookmarks', enabled = true},                        -- bookmarks 
+	{'tom-anders/telescope-vim-bookmarks.nvim', enabled = true},
+	{'folke/which-key.nvim', enabled = true},
+      --config = function()
+        --vim.o.timeout = true
+        --vim.o.timeoutlen = 300
+        --require("which-key").setup {
+        --}
+      --end
+	{'duane9/nvim-rg', enabled = true},                                     -- ripgrep
+	{'petertriho/nvim-scrollbar', enabled = true},
+	{'mfussenegger/nvim-dap', enabled = true},
+    -- Improve LSP 
+	{'nvimdev/lspsaga.nvim', enabled = true},
+      --after = 'nvim-lspconfig', enabled = true},
+      --config = function()
+        --require('lspsaga').setup({
+          --ui = {
+            --code_action = '💡'
+          --}
+        --})
+      --end,
     --})
-
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-      require('packer').sync()
-    end
-end
---    config = {
---        package_root = vim.fn.stdpath('config') .. '/site/pack'
---    }
-)
+	{'Exafunction/codeium.nvim', enabled = true},
+      --config = function()
+        --require("codeium").setup({
+          --enable_chat = true
+        --})
+      --end
+    --}
+})
