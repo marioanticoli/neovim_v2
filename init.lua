@@ -216,6 +216,7 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
     },
+    lazy = true,
     config = true,
     opts = {
       enable_chat = true
