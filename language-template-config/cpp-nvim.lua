@@ -1,4 +1,4 @@
--- Remember to link with name .nvimrc.lua
+-- Remember to link with name .nvim.lua
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
