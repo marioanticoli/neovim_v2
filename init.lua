@@ -134,7 +134,13 @@ require("lazy").setup({
   },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { 'tpope/vim-fugitive' },
-  { 'lewis6991/gitsigns.nvim', config = true },
+  { 
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+      require("scrollbar.handlers.gitsigns").setup()
+    end
+  },
   { 'f-person/git-blame.nvim' },
   {
     'windwp/nvim-autopairs',
