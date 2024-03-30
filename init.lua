@@ -106,7 +106,8 @@ require("lazy").setup({
           },
         }
       }
-    }
+    },
+    event = 'BufEnter'
   },
 	{
     'navarasu/onedark.nvim',
@@ -141,7 +142,10 @@ require("lazy").setup({
       require("scrollbar.handlers.gitsigns").setup()
     end
   },
-  { 'f-person/git-blame.nvim' },
+  {
+    'f-person/git-blame.nvim',
+    event = 'BufEnter',
+  },
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
@@ -167,7 +171,8 @@ require("lazy").setup({
         },
         preset = 'powerline',
       }
-    }
+    },
+    event = 'BufEnter'
   },
 	{ 'petertriho/nvim-scrollbar', config = true },
   {
@@ -191,11 +196,14 @@ require("lazy").setup({
           clear_on_cursor_move = true,
         }
       }
-    }
+    },
     -- Optional: Add event key for lazy-loading on specific event
-    -- event = "BufEnter",
+    event = "BufEnter",
   },
-	{ 'nvim-treesitter/nvim-treesitter-refactor' },
+	{ 
+    'nvim-treesitter/nvim-treesitter-refactor',
+    event = 'BufEnter',
+  },
 	{ 'williamboman/mason.nvim', config = true },
   {
     "folke/which-key.nvim",
@@ -264,11 +272,6 @@ lspconfig.tsserver.setup {}
 -- Autocompletion settings
 local cmp = require'cmp'
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -278,7 +281,6 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
     { name = 'nvim_lsp_signature_help' },
