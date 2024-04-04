@@ -76,20 +76,18 @@ require("lazy").setup({
 
       require("nvim-tree").setup({
         on_attach = on_attach_change,
+        view = {
+          number = true,
+          relativenumber = true,
+        },
+        update_focused_file = {
+          enable = true,
+        },
+        filters = {
+          dotfiles = false,
+        },
       })
     end,
-    opts = {
-      view = {
-        number = true,
-        relativenumber = true,
-      },
-      update_focused_file = {
-        enable = true,
-      },
-      filters = {
-        dotfiles = false,
-      },
-    }
   },
 	{ 'DanilaMihailov/beacon.nvim' },
   {
