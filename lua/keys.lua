@@ -70,7 +70,7 @@ map('n', '<leader>hu', ':Gitsigns undo_stage_hunk<CR>', opts)
 map('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
 
 -- Snippets
-map('n', '<leader>s', ':Telescope luasnip<cr>', opts)
+--map('n', '<leader>s', ':Telescope luasnip<cr>', opts)
 
 -- Debugger
 map('n', '<leader>d', ':DapToggleBreakpoint<cr>', opts)
@@ -80,3 +80,6 @@ map('n', '<leader>w', ':set wrap!<cr>', opts)
 
 -- Unbind key 
 map('n', '<c>c', '<Nop>', opts)
+
+-- populate arglist from buffer
+map('n', ';rr', ':lua set_arglist_from_buffer()<cr>', opts)

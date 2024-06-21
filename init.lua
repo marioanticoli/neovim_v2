@@ -4,6 +4,7 @@
 require('vars')      -- Variables
 require('opts')      -- Options
 require('keys')      -- Keymaps
+require('functions')
 
 -- Auto setup lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
