@@ -43,6 +43,12 @@ require("lazy").setup({
           }
         end
 
+        local function open_with_system_default()
+          local node = api.tree.get_node_under_cursor()
+          local filepath = node.absolute_path
+          vim.cmd('silent !xdg-open ' .. filepath .. ' &')
+        end
+
         --api.config.mappings.default_on_attach(bufnr)
 
         -- BEGIN_DEFAULT_ON_ATTACH
@@ -72,6 +78,7 @@ require("lazy").setup({
         vim.keymap.del('n', 'f', { buffer = bufnr })
 
         vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Up'))
+        vim.keymap.set('n', 'O', open_with_system_default, opts('Open with default application'))
       end
 
       require("nvim-tree").setup({
@@ -165,7 +172,7 @@ require("lazy").setup({
       highlight_inactive_file_icons = false,
       icons = {
         diagnostics = {
-          [vim.diagnostic.severity.ERROR] = {enabled = true, icon = 'ﬀ' }
+          [vim.diagnostic.severity.ERROR] = {enabled = true, icon = '⚠️' }
         },
         preset = 'powerline',
       }
