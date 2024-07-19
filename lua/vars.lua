@@ -14,3 +14,7 @@ g.loaded_netrwPlugin = 1
 g.mapleader = ";"
 g.localleader = "\\"
 
+-- Set slime to target tmux
+g.slime_target = "tmux"
+g.slime_default_config = { socket_name = "default", target_pane = "main:1.0" }
+

@@ -272,6 +272,7 @@ require("lazy").setup({
       'hrsh7th/cmp-cmdline',
     }
   },
+  { 'jpalardy/vim-slime' },
 })
 
 -- LSP

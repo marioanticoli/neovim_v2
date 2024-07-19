@@ -85,3 +85,6 @@ map('n', '<c>c', '<Nop>', opts)
 map('n', '<leader>rr', ':lua set_arglist_from_buffer()<cr>', opts)
 -- run command on files from buffer
 map('n', '<leader>rc', ':lua run_cmd_on_buffers_with_input()<cr>', opts)-- run command on files from buffer
+
+-- Slime 
+map('n', '<leader>t', ':SlimeSendCurrentLine<cr><cr><cr>', opts)
