@@ -1,4 +1,4 @@
-function get_lines_from_buffer()
+local function get_lines_from_buffer()
   -- Get the current buffer number
   local buf = vim.api.nvim_get_current_buf()
 
@@ -21,4 +21,19 @@ function set_arglist_from_buffer()
 
   local arglist = table.concat(unique_filenames, " ")
   vim.cmd("args " .. arglist)
+end
+
+local function run_cmd_on_buffers(cmd)
+  set_arglist_from_buffer()
+  -- receive command and apply with argdo
+  vim.cmd("argdo " .. cmd)
+end
+
+function run_cmd_on_buffers_with_input()
+  local cmd = vim.fn.input('Enter command for argdo: ')
+  if cmd and cmd ~= '' then
+    run_cmd_on_buffers(cmd)
+  else
+    print('No command entered.')
+  end
 end

@@ -82,4 +82,6 @@ map('n', '<leader>w', ':set wrap!<cr>', opts)
 map('n', '<c>c', '<Nop>', opts)
 
 -- populate arglist from buffer
-map('n', ';rr', ':lua set_arglist_from_buffer()<cr>', opts)
+map('n', '<leader>rr', ':lua set_arglist_from_buffer()<cr>', opts)
+-- run command on files from buffer
+map('n', '<leader>rc', ':lua run_cmd_on_buffers_with_input()<cr>', opts)-- run command on files from buffer
