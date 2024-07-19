@@ -236,6 +236,20 @@ require("lazy").setup({
       enable_chat = true
     }
   },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup()
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
   { 'neovim/nvim-lspconfig' },
   {
     'nvimdev/lspsaga.nvim',
@@ -301,6 +315,7 @@ cmp.setup({
     { name = "path" },
     { name = 'nvim_lsp_signature_help' },
     { name = "luasnip" },
+    { name = "copilot", group_index = 2 },
     { name = "codeium" }
   })
 })
