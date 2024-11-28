@@ -139,11 +139,17 @@ require("lazy").setup({
       extensions_list = {'fzf', 'ui-select', 'live_grep_args'}
     }
   },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { 
+    "lukas-reineke/indent-blankline.nvim", 
+    event = "BufEnter",
+    main = "ibl",
+    opts = {} 
+  },
   { 'tpope/vim-fugitive' },
   { 
     'lewis6991/gitsigns.nvim',
-    config = function()
+     event = "BufEnter",
+     config = function()
       require('gitsigns').setup()
       require("scrollbar.handlers.gitsigns").setup()
     end
@@ -157,7 +163,10 @@ require("lazy").setup({
     event = "InsertEnter",
     config = true
   },
-  { 'preservim/nerdcommenter' },
+  { 
+    'preservim/nerdcommenter',
+    event = 'InsertEnter'
+  },
   {
     'romgrk/barbar.nvim',
     dependencies = {
@@ -221,9 +230,15 @@ require("lazy").setup({
     opts = {}
   },
 	{ 'duane9/nvim-rg' },                                     -- ripgrep
-	{ 'MattesGroeger/vim-bookmarks' },                        -- bookmarks 
+	{ 
+    'MattesGroeger/vim-bookmarks', 
+    event = 'BufEnter'
+  },                        -- bookmarks 
 	{ 'tom-anders/telescope-vim-bookmarks.nvim' },
-	{ 'mfussenegger/nvim-dap' },
+	{ 
+    'mfussenegger/nvim-dap', 
+    lazy = true
+  },
   {
     "Exafunction/codeium.nvim",
     dependencies = {
@@ -272,7 +287,18 @@ require("lazy").setup({
       'hrsh7th/cmp-cmdline',
     }
   },
-  { 'jpalardy/vim-slime' },
+  { 
+    'jpalardy/vim-slime', 
+    event = 'BufEnter'
+  },
+  {
+  "ribelo/taskwarrior.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  }
 })
 
 -- LSP
@@ -293,7 +319,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 -- Load the lspconfig module
 lspconfig = require('lspconfig')
 
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
 
 -- Autocompletion settings
 local cmp = require'cmp'
