@@ -132,11 +132,15 @@ require("lazy").setup({
         build = 'make',
       },
       'nvim-telescope/telescope-live-grep-args.nvim',
-      'nvim-lua/plenary.nvim' 
+      'nvim-lua/plenary.nvim',
+      'jonarrien/telescope-cmdline.nvim',
+    },
+    keys = {
+      { '<leader><leader>', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
     },
     config = true,
     opts = {
-      extensions_list = {'fzf', 'ui-select', 'live_grep_args'}
+      extensions_list = {'fzf', 'ui-select', 'live_grep_args', 'cmdline'}
     }
   },
   { 

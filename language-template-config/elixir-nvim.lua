@@ -43,8 +43,8 @@ require('dap').configurations.elixir = {
 
 -- Set up Elixir LSP
 lspconfig.elixirls.setup {
-  --cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
-  cmd = { "/home/mario/.local/share/nvim/mason/bin/lexical" },
+  cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
+  --cmd = { "/home/mario/.local/share/nvim/mason/bin/lexical" },
   --cmd = { "/home/mario/.local/share/nvim/mason/bin/nextls" },
   on_attach = on_attach,
   flags = {
