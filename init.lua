@@ -150,6 +150,7 @@ require("lazy").setup({
     opts = {} 
   },
   { 'tpope/vim-fugitive' },
+	{ 'petertriho/nvim-scrollbar', config = true },
   { 
     'lewis6991/gitsigns.nvim',
      event = "BufEnter",
@@ -193,9 +194,9 @@ require("lazy").setup({
     },
     event = 'BufEnter'
   },
-	{ 'petertriho/nvim-scrollbar', config = true },
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     config = true,
     opts = {
       ensure_installed = {
@@ -265,6 +266,7 @@ require("lazy").setup({
   },
   {
     "zbirenbaum/copilot-cmp",
+    dependencies = { "copilot.lua" },
     config = function()
       require("copilot_cmp").setup()
     end,
