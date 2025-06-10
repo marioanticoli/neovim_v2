@@ -199,6 +199,7 @@ require("lazy").setup({
     build = ":TSUpdate",
     config = true,
     opts = {
+      auto_install = false,
       ensure_installed = {
         "javascript",
         "json",
@@ -245,16 +246,12 @@ require("lazy").setup({
     lazy = true
   },
   {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    lazy = true,
-    config = true,
-    opts = {
-      enable_chat = true
-    }
+    "Exafunction/windsurf.vim",
+    --dependencies = {
+      --"nvim-lua/plenary.nvim",
+      --"hrsh7th/nvim-cmp",
+    --},
+    lazy = true
   },
   {
     "zbirenbaum/copilot.lua",
