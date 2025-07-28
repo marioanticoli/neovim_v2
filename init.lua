@@ -126,6 +126,7 @@ require("lazy").setup({
   },
   {
     'nvim-telescope/telescope.nvim',
+    cmd = "Telescope",
     dependencies = { 
       {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -285,13 +286,14 @@ require("lazy").setup({
     config = function()
       require("copilot").setup()
     end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end,
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end,
+      },
+    },
   },
   { 'neovim/nvim-lspconfig' },
   {
@@ -319,14 +321,6 @@ require("lazy").setup({
     'jpalardy/vim-slime', 
     event = 'BufEnter'
   },
-  {
-  "ribelo/taskwarrior.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  }
 })
 
 -- LSP

@@ -42,16 +42,37 @@ require('dap').configurations.elixir = {
 }
 
 -- Set up Elixir LSP
-lspconfig.elixirls.setup {
-  cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
+--lspconfig.elixirls.setup {
+  --cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
+  ----cmd = { "/home/mario/.local/share/nvim/mason/bin/lexical" },
+  --on_attach = on_attach,
+  --flags = {
+    --debounce_text_changes = 150,
+  --},
+  --capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+--})
+
+lspconfig["nextls"].setup({
+  cmd = {"nextls", "--stdio"},
+  init_options = {
+    extensions = {
+      credo = { enable = true }
+    },
+    experimental = {
+      completions = { enable = true }
+    }
+  }
+})
+
+--lspconfig.lexical.setup {
   --cmd = { "/home/mario/.local/share/nvim/mason/bin/lexical" },
-  --cmd = { "/home/mario/.local/share/nvim/mason/bin/nextls" },
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
+  --root_dir = function(fname)
+    --return util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
+  --end,
+  --filetypes = { "elixir", "eelixir", "heex" },
+  ---- optional settings
+  --settings = {}
+--}
 
 -- Set up Erlang LSP
 lspconfig.erlangls.setup {
