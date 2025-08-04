@@ -42,27 +42,26 @@ require('dap').configurations.elixir = {
 }
 
 -- Set up Elixir LSP
---lspconfig.elixirls.setup {
-  --cmd = { "/home/mario/.local/share/nvim/mason/bin/elixir-ls" },
-  ----cmd = { "/home/mario/.local/share/nvim/mason/bin/lexical" },
-  --on_attach = on_attach,
-  --flags = {
-    --debounce_text_changes = 150,
-  --},
-  --capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
---})
-
-lspconfig["nextls"].setup({
-  cmd = {"nextls", "--stdio"},
-  init_options = {
-    extensions = {
-      credo = { enable = true }
-    },
-    experimental = {
-      completions = { enable = true }
-    }
-  }
+lspconfig.elixirls.setup({
+  cmd = { "elixir-ls" },
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  capabilities = capabilities
 })
+
+--lspconfig["nextls"].setup({
+  --cmd = {"nextls", "--stdio"},
+  --init_options = {
+    --extensions = {
+      --credo = { enable = true }
+    --},
+    --experimental = {
+      --completions = { enable = true }
+    --}
+  --}
+--})
 
 --lspconfig.lexical.setup {
   --cmd = { "/home/mario/.local/share/nvim/mason/bin/lexical" },
