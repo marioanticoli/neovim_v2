@@ -42,7 +42,7 @@ require('dap').configurations.elixir = {
 }
 
 -- Set up Elixir LSP
-lspconfig.elixirls.setup({
+lsp.config('elixirls', {
   cmd = { "elixir-ls" },
   on_attach = on_attach,
   flags = {
@@ -51,7 +51,17 @@ lspconfig.elixirls.setup({
   capabilities = capabilities
 })
 
---lspconfig["nextls"].setup({
+--lsp.config('lexical'), {
+  --cmd = { "/home/mario/.local/share/nvim/mason/bin/expert" },
+  --root_dir = function(fname)
+    --return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
+  --end,
+  --filetypes = { "elixir", "eelixir", "heex" },
+  ---- optional settings
+  --settings = {}
+--})
+
+--lsp.config('nextls', {
   --cmd = {"nextls", "--stdio"},
   --init_options = {
     --extensions = {
@@ -63,7 +73,7 @@ lspconfig.elixirls.setup({
   --}
 --})
 
---lspconfig.lexical.setup {
+--lsp.config('lexical', {
   --cmd = { "/home/mario/.local/share/nvim/mason/bin/lexical" },
   --root_dir = function(fname)
     --return util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
@@ -71,16 +81,16 @@ lspconfig.elixirls.setup({
   --filetypes = { "elixir", "eelixir", "heex" },
   ---- optional settings
   --settings = {}
---}
+--})
 
 -- Set up Erlang LSP
-lspconfig.erlangls.setup {
+lsp.config('erlangls', {
   cmd = { "/home/mario/.local/share/nvim/mason/bin/erlang_ls" },
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
   }
-}
+})
 
 vim.api.nvim_set_keymap('n', '<leader>f', ':w <bar> !mix format %<CR>', {noremap=true, silent=true})
 

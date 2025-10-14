@@ -16,5 +16,5 @@ g.localleader = "\\"
 
 -- Set slime to target tmux
 g.slime_target = "tmux"
-g.slime_default_config = { socket_name = "default", target_pane = "main:1.0" }
-
+g.slime_default_config = { socket_name = "default", target_pane = "1" }
+g.slime_dont_ask_default = 1

@@ -1,6 +1,6 @@
 -- Remember to link with name .nvim.lua
 
-require('lspconfig').rust_analyzer.setup({
+lsp.config('rust_analyzer', {
     on_attach=on_attach,
     settings = {
         ["rust-analyzer"] = {

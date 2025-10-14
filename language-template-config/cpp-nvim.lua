@@ -21,7 +21,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- CPP LSP 
-lspconfig.clangd.setup {
+lsp.config('clangd', {
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
   init_options = {
     compilationDatabaseDirectory = "build";
@@ -32,4 +32,4 @@ lspconfig.clangd.setup {
       excludeArgs = { "-frounding-math"} ;
     };
   }
-}
+})

@@ -339,9 +339,9 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 )
 
 -- Load the lspconfig module
-lspconfig = require('lspconfig')
+lsp = vim.lsp
 
-lspconfig.ts_ls.setup {}
+lsp.enable('ts_ls.setup')
 
 -- Autocompletion settings
 local cmp = require'cmp'
@@ -369,7 +369,7 @@ cmp.setup({
 })
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

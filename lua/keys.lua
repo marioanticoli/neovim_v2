@@ -87,4 +87,6 @@ map('n', '<leader>rr', ':lua set_arglist_from_buffer()<cr>', opts)
 map('n', '<leader>rc', ':lua run_cmd_on_buffers_with_input()<cr>', opts)-- run command on files from buffer
 
 -- Slime 
-map('n', '<leader>t', ':SlimeSendCurrentLine<cr><cr><cr>', opts)
+-- Note: <Plug> is a way to handle plugin commands
+map('n', '<leader>t', '<Plug>SlimeSendCurrentLine', opts)
+map('v', '<leader>s', '<Plug>SlimeRegionSend', opts)
