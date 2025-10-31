@@ -51,6 +51,8 @@ lsp.config('elixirls', {
   capabilities = capabilities
 })
 
+lsp.enable('elixirls')
+
 --lsp.config('lexical'), {
   --cmd = { "/home/mario/.local/share/nvim/mason/bin/expert" },
   --root_dir = function(fname)
@@ -91,6 +93,8 @@ lsp.config('erlangls', {
     debounce_text_changes = 150,
   }
 })
+
+lsp.enable('erlangls')
 
 vim.api.nvim_set_keymap('n', '<leader>f', ':w <bar> !mix format %<CR>', {noremap=true, silent=true})
 

@@ -341,7 +341,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 -- Load the lspconfig module
 lsp = vim.lsp
 
-lsp.enable('ts_ls.setup')
+lsp.enable('ts_ls')
 
 -- Autocompletion settings
 local cmp = require'cmp'
