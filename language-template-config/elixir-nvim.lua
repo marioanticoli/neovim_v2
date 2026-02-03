@@ -86,15 +86,15 @@ lsp.enable('elixirls')
 --})
 
 -- Set up Erlang LSP
-lsp.config('erlangls', {
-  cmd = { "/home/mario/.local/share/nvim/mason/bin/erlang_ls" },
+lsp.config('elp', {
+  cmd = { "elp", "server" },
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
   }
 })
 
-lsp.enable('erlangls')
+lsp.enable('elp')
 
 vim.api.nvim_set_keymap('n', '<leader>f', ':w <bar> !mix format %<CR>', {noremap=true, silent=true})
 
