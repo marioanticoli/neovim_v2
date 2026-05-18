@@ -22,3 +22,6 @@ lsp.config('rust_analyzer', {
     }
 })
 
+lsp.enable('rust_analyzer')
+
+

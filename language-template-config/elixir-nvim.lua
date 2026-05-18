@@ -1,30 +1,7 @@
 -- Remember to link with name .nvim.lua
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    "eex",
-    "elixir",
-    "erlang",
-    "heex",
-    "surface",
-    "html",
-    "javascript",
-    "json",
-    "yaml"
- },
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  },
-  refactor = {
-    highlight_definitions = {
-      enable = true,
-      clear_on_cursor_move = true,
-    }
-  }
-}
+-- Install treesitter parsers for elixir development
+require('nvim-treesitter').install({ "eex", "elixir", "erlang", "heex", "surface", "html", "javascript", "json", "yaml" })
 
 -- Debugger 
 require('dap').configurations.elixir = {
@@ -53,15 +30,13 @@ lsp.config('elixirls', {
 
 lsp.enable('elixirls')
 
---lsp.config('lexical'), {
-  --cmd = { "/home/mario/.local/share/nvim/mason/bin/expert" },
-  --root_dir = function(fname)
-    --return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
-  --end,
-  --filetypes = { "elixir", "eelixir", "heex" },
-  ---- optional settings
-  --settings = {}
+--lsp.config('expert', {
+  --cmd = { 'expert', '--stdio' },
+  --root_markers = { 'mix.exs', '.git' },
+  --filetypes = { 'elixir', 'eelixir', 'heex' },
 --})
+
+--lsp.enable('expert')
 
 --lsp.config('nextls', {
   --cmd = {"nextls", "--stdio"},

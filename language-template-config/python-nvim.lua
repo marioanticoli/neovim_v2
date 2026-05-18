@@ -4,3 +4,5 @@ lsp.config('pylsp', {
   capabilities = capabilities,
 })
 
+lsp.enable('pylsp')
+
