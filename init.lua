@@ -197,6 +197,7 @@ require("lazy").setup({
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
     config = true,
     opts = {
@@ -212,19 +213,8 @@ require("lazy").setup({
       indent = {
         enable = true,
       },
-      refactor = {
-        highlight_definitions = {
-          enable = true,
-          clear_on_cursor_move = true,
-        }
-      }
     },
-    -- Optional: Add event key for lazy-loading on specific event
     event = "BufEnter",
-  },
-	{ 
-    'nvim-treesitter/nvim-treesitter-refactor',
-    event = 'BufEnter',
   },
 	{ 'williamboman/mason.nvim', config = true },
   {
@@ -247,44 +237,14 @@ require("lazy").setup({
     lazy = true
   },
   {
-    "GeorgesAlkhouri/nvim-aider",
-    lazy = true,
-    cmd = "Aider",
-    -- Example key mappings for common actions:
-    keys = {
-      { "<leader>a/", "<cmd>Aider toggle<cr>", desc = "Toggle Aider" },
-      { "<leader>as", "<cmd>Aider send<cr>", desc = "Send to Aider", mode = { "n", "v" } },
-      { "<leader>ac", "<cmd>Aider command<cr>", desc = "Aider Commands" },
-      { "<leader>ab", "<cmd>Aider buffer<cr>", desc = "Send Buffer" },
-      { "<leader>a+", "<cmd>Aider add<cr>", desc = "Add File" },
-      { "<leader>a-", "<cmd>Aider drop<cr>", desc = "Drop File" },
-      { "<leader>ar", "<cmd>Aider add readonly<cr>", desc = "Add Read-Only" },
-      { "<leader>aR", "<cmd>Aider reset<cr>", desc = "Reset Session" },
-      -- Example nvim-tree.lua integration if needed
-      { "<leader>a+", "<cmd>AiderTreeAddFile<cr>", desc = "Add File from Tree to Aider", ft = "NvimTree" },
-      { "<leader>a-", "<cmd>AiderTreeDropFile<cr>", desc = "Drop File from Tree from Aider", ft = "NvimTree" },
-    },
-    dependencies = {
-      "folke/snacks.nvim",
-      --- The below dependencies are optional
-      "catppuccin/nvim",
-      "nvim-tree/nvim-tree.lua",
-      --- Neo-tree integration
-      --{
-        --"nvim-neo-tree/neo-tree.nvim",
-        --opts = function(_, opts)
-          --require("nvim_aider.neo_tree").setup(opts)
-        --end,
-      --},
-    },
-    config = true,
-  },
-  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
     end,
     dependencies = {
       {
@@ -324,23 +284,30 @@ require("lazy").setup({
 })
 
 -- LSP
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    -- Use a sharp border with `FloatBorder` highlights
-    border = "single"
-  }
-)
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    -- Use a sharp border with `FloatBorder` highlights
-    border = "single"
-  }
-)
+vim.lsp.config("*", {
+  handlers = {
+    ["textDocument/hover"] = function(err, result, ctx, config)
+      config = config or {}
+      config.border = "single"
+      vim.lsp.handlers.hover(err, result, ctx, config)
+    end,
+    ["textDocument/signatureHelp"] = function(err, result, ctx, config)
+      config = config or {}
+      config.border = "single"
+      vim.lsp.handlers.signature_help(err, result, ctx, config)
+    end,
+  },
+})
 
 -- Load the lspconfig module
 lsp = vim.lsp
 
+-- Enable treesitter highlighting for all buffers that have a parser
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(ev)
+    if pcall(vim.treesitter.start, ev.buf) then end
+  end,
+})
 lsp.enable('ts_ls')
 
 -- Autocompletion settings
